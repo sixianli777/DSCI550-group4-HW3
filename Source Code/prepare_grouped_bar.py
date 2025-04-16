@@ -1,7 +1,7 @@
 import pandas as pd
 
-# Output 2: Grouped bar chart → apparition type by time of day
-df = pd.read_csv("haunted_places_complete_v2.tsv", sep="\t")
+# Output 2: Grouped bar chart - apparition type by time of day
+df = pd.read_csv("Data/haunted_places_complete_v2.tsv", sep="\t")
 # Drop rows with missing values in relevant columns
 df = df.dropna(subset=["time_of_day", "apparition_type"])
 
