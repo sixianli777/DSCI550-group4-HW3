@@ -1,7 +1,8 @@
+import os
 import pandas as pd
-
-# Load original dataset
-df = pd.read_csv("../Data/haunted_places_complete_v2.tsv", sep="\t")
+base_dir = os.path.dirname(__file__)  # folder of current .py file
+tsv_path = os.path.join(base_dir, "..", "Data", "haunted_places_hw2_complete.tsv")
+df = pd.read_csv(tsv_path, sep="\t")
 
 # Output 1: Scatter plot: correlation between alcohol rate and sightings by states
 # Keep relevant columns
@@ -23,5 +24,6 @@ df_agg = df.groupby("state_abbrev").agg(
 ).reset_index()
 
 df_agg["pc_adult_drink_monthly"] = df_agg["pc_adult_drink_monthly"].round(1)
-# Output TSV for D3 visualization
-df_agg.to_csv("../Data/scatter.tsv", sep="\t", index=False)
+
+output_path = os.path.join(base_dir, "..", "Data", "scatter.tsv")
+df_agg.to_csv(output_path, sep="\t", index=False)

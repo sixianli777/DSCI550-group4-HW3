@@ -4,7 +4,7 @@ const margin = { top: 40, right: 40, bottom: 50, left: 60 };
 
 const svg = d3.select("svg");
 
-d3.json("data/scatter_final.json").then(data => {
+d3.json("Data/scatter_final.json").then(data => {
   // Set up scales
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.pc_adult_drink_monthly)).nice()

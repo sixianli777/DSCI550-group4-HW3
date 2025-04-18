@@ -1,13 +1,15 @@
+import os
 import pandas as pd
 
-# Load the scatter data
-scatter_df = pd.read_csv("../Data/scatter.tsv", sep="\t")
+base_dir = os.path.dirname(__file__)  # folder of current .py file
+tsv_path = os.path.join(base_dir, "..", "Data", "scatter.tsv")
+excel_path = os.path.join(base_dir, "..", "Data", "census.xlsx")
 
-# Load population Excel (skip header rows)
-pop_df = pd.read_excel("../Data/census.xlsx", skiprows=3)
+df_csv = pd.read_csv(tsv_path, sep="\t")
+df_excel = pd.read_excel(excel_path, skiprows=3)
 
 # Clean and filter to states only
-pop_states = pop_df.iloc[5:56].copy()
+pop_states = df_excel.iloc[5:56].copy()
 pop_states = pop_states.rename(columns={"Unnamed: 0": "state", 2023: "population_2023"})
 pop_states["state"] = pop_states["state"].str.replace("^\.", "", regex=True).str.strip()
 pop_states = pop_states[["state", "population_2023"]]
@@ -30,10 +32,10 @@ abbrev_to_state = {
 }
 
 # Map full state names
-scatter_df["state"] = scatter_df["state_abbrev"].map(abbrev_to_state)
+df_csv["state"] = df_csv["state_abbrev"].map(abbrev_to_state)
 
 # Merge datasets
-merged_df = scatter_df.merge(pop_states, on="state", how="left")
+merged_df = df_csv.merge(pop_states, on="state", how="left")
 
 # Add DC's population manually
 merged_df.loc[merged_df["state_abbrev"] == "DC", "population_2023"] = 671803
@@ -44,4 +46,5 @@ merged_df["sightings"] = merged_df["sightings"].round(1)
 
 # Save output
 final_df = merged_df[["state_abbrev", "sightings", "pc_adult_drink_monthly"]]
-final_df.to_csv("../Data/scatter_final.tsv", sep="\t", index=False)
+output_path = os.path.join(base_dir, "..", "Data", "scatter_final.json")
+final_df.to_json(output_path, orient='records', lines=False)
