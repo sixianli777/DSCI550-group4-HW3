@@ -1,0 +1,744 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "name": "Ghostly Entities",
+      "group": "apparition_type"
+    },
+    {
+      "id": 1,
+      "name": "Mythological Creatures",
+      "group": "apparition_type"
+    },
+    {
+      "id": 2,
+      "name": "Death",
+      "group": "event_type"
+    },
+    {
+      "id": 3,
+      "name": "Supernatural",
+      "group": "event_type"
+    },
+    {
+      "id": 4,
+      "name": "Unknown",
+      "group": "apparition_type"
+    },
+    {
+      "id": 5,
+      "name": "barn",
+      "group": "detected_objects"
+    },
+    {
+      "id": 6,
+      "name": "church",
+      "group": "detected_objects"
+    },
+    {
+      "id": 7,
+      "name": "Accident",
+      "group": "event_type"
+    },
+    {
+      "id": 8,
+      "name": "bannister",
+      "group": "detected_objects"
+    },
+    {
+      "id": 9,
+      "name": "prison",
+      "group": "detected_objects"
+    },
+    {
+      "id": 10,
+      "name": "sliding_door",
+      "group": "detected_objects"
+    },
+    {
+      "id": 11,
+      "name": "Other Paranormal Entities",
+      "group": "apparition_type"
+    },
+    {
+      "id": 12,
+      "name": "Supernatural Beings",
+      "group": "apparition_type"
+    },
+    {
+      "id": 13,
+      "name": "vault",
+      "group": "detected_objects"
+    },
+    {
+      "id": 14,
+      "name": "Orbs",
+      "group": "apparition_type"
+    },
+    {
+      "id": 15,
+      "name": "library",
+      "group": "detected_objects"
+    },
+    {
+      "id": 16,
+      "name": "lakeside",
+      "group": "detected_objects"
+    },
+    {
+      "id": 17,
+      "name": "park_bench",
+      "group": "detected_objects"
+    },
+    {
+      "id": 18,
+      "name": "Shadow Figures",
+      "group": "apparition_type"
+    },
+    {
+      "id": 19,
+      "name": "monastery",
+      "group": "detected_objects"
+    },
+    {
+      "id": 20,
+      "name": "Ritual",
+      "group": "event_type"
+    },
+    {
+      "id": 21,
+      "name": "Extraterrestrial Entities",
+      "group": "apparition_type"
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 8
+    },
+    {
+      "source": 2,
+      "target": 19
+    },
+    {
+      "source": 3,
+      "target": 6
+    },
+    {
+      "source": 20,
+      "target": 4
+    },
+    {
+      "source": 7,
+      "target": 9
+    },
+    {
+      "source": 2,
+      "target": 12
+    },
+    {
+      "source": 1,
+      "target": 5
+    },
+    {
+      "source": 7,
+      "target": 1
+    },
+    {
+      "source": 21,
+      "target": 5
+    },
+    {
+      "source": 1,
+      "target": 13
+    },
+    {
+      "source": 21,
+      "target": 13
+    },
+    {
+      "source": 11,
+      "target": 20
+    },
+    {
+      "source": 20,
+      "target": 8
+    },
+    {
+      "source": 7,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 4
+    },
+    {
+      "source": 1,
+      "target": 19
+    },
+    {
+      "source": 21,
+      "target": 19
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 14,
+      "target": 4
+    },
+    {
+      "source": 18,
+      "target": 5
+    },
+    {
+      "source": 4,
+      "target": 8
+    },
+    {
+      "source": 3,
+      "target": 15
+    },
+    {
+      "source": 14,
+      "target": 8
+    },
+    {
+      "source": 12,
+      "target": 16
+    },
+    {
+      "source": 12,
+      "target": 10
+    },
+    {
+      "source": 12,
+      "target": 15
+    },
+    {
+      "source": 21,
+      "target": 20
+    },
+    {
+      "source": 7,
+      "target": 17
+    },
+    {
+      "source": 1,
+      "target": 6
+    },
+    {
+      "source": 11,
+      "target": 16
+    },
+    {
+      "source": 11,
+      "target": 10
+    },
+    {
+      "source": 2,
+      "target": 11
+    },
+    {
+      "source": 2,
+      "target": 15
+    },
+    {
+      "source": 7,
+      "target": 0
+    },
+    {
+      "source": 11,
+      "target": 3
+    },
+    {
+      "source": 2,
+      "target": 21
+    },
+    {
+      "source": 0,
+      "target": 9
+    },
+    {
+      "source": 20,
+      "target": 9
+    },
+    {
+      "source": 20,
+      "target": 18
+    },
+    {
+      "source": 1,
+      "target": 15
+    },
+    {
+      "source": 2,
+      "target": 14
+    },
+    {
+      "source": 21,
+      "target": 16
+    },
+    {
+      "source": 21,
+      "target": 10
+    },
+    {
+      "source": 1,
+      "target": 3
+    },
+    {
+      "source": 21,
+      "target": 3
+    },
+    {
+      "source": 0,
+      "target": 13
+    },
+    {
+      "source": 4,
+      "target": 9
+    },
+    {
+      "source": 7,
+      "target": 18
+    },
+    {
+      "source": 0,
+      "target": 17
+    },
+    {
+      "source": 14,
+      "target": 9
+    },
+    {
+      "source": 12,
+      "target": 4
+    },
+    {
+      "source": 18,
+      "target": 10
+    },
+    {
+      "source": 18,
+      "target": 15
+    },
+    {
+      "source": 20,
+      "target": 13
+    },
+    {
+      "source": 11,
+      "target": 4
+    },
+    {
+      "source": 18,
+      "target": 16
+    },
+    {
+      "source": 0,
+      "target": 19
+    },
+    {
+      "source": 18,
+      "target": 3
+    },
+    {
+      "source": 20,
+      "target": 17
+    },
+    {
+      "source": 12,
+      "target": 8
+    },
+    {
+      "source": 3,
+      "target": 10
+    },
+    {
+      "source": 3,
+      "target": 16
+    },
+    {
+      "source": 11,
+      "target": 8
+    },
+    {
+      "source": 7,
+      "target": 5
+    },
+    {
+      "source": 7,
+      "target": 13
+    },
+    {
+      "source": 20,
+      "target": 19
+    },
+    {
+      "source": 1,
+      "target": 20
+    },
+    {
+      "source": 0,
+      "target": 6
+    },
+    {
+      "source": 2,
+      "target": 16
+    },
+    {
+      "source": 2,
+      "target": 10
+    },
+    {
+      "source": 4,
+      "target": 17
+    },
+    {
+      "source": 20,
+      "target": 12
+    },
+    {
+      "source": 14,
+      "target": 13
+    },
+    {
+      "source": 21,
+      "target": 4
+    },
+    {
+      "source": 14,
+      "target": 17
+    },
+    {
+      "source": 7,
+      "target": 19
+    },
+    {
+      "source": 20,
+      "target": 6
+    },
+    {
+      "source": 7,
+      "target": 12
+    },
+    {
+      "source": 7,
+      "target": 6
+    },
+    {
+      "source": 0,
+      "target": 15
+    },
+    {
+      "source": 1,
+      "target": 16
+    },
+    {
+      "source": 1,
+      "target": 10
+    },
+    {
+      "source": 4,
+      "target": 6
+    },
+    {
+      "source": 18,
+      "target": 4
+    },
+    {
+      "source": 0,
+      "target": 5
+    },
+    {
+      "source": 14,
+      "target": 6
+    },
+    {
+      "source": 12,
+      "target": 9
+    },
+    {
+      "source": 20,
+      "target": 15
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 11,
+      "target": 9
+    },
+    {
+      "source": 18,
+      "target": 8
+    },
+    {
+      "source": 2,
+      "target": 9
+    },
+    {
+      "source": 2,
+      "target": 1
+    },
+    {
+      "source": 3,
+      "target": 12
+    },
+    {
+      "source": 20,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 8
+    },
+    {
+      "source": 2,
+      "target": 4
+    },
+    {
+      "source": 7,
+      "target": 11
+    },
+    {
+      "source": 7,
+      "target": 15
+    },
+    {
+      "source": 2,
+      "target": 8
+    },
+    {
+      "source": 3,
+      "target": 17
+    },
+    {
+      "source": 4,
+      "target": 5
+    },
+    {
+      "source": 12,
+      "target": 13
+    },
+    {
+      "source": 0,
+      "target": 20
+    },
+    {
+      "source": 1,
+      "target": 9
+    },
+    {
+      "source": 21,
+      "target": 9
+    },
+    {
+      "source": 4,
+      "target": 13
+    },
+    {
+      "source": 11,
+      "target": 13
+    },
+    {
+      "source": 12,
+      "target": 17
+    },
+    {
+      "source": 14,
+      "target": 5
+    },
+    {
+      "source": 11,
+      "target": 17
+    },
+    {
+      "source": 2,
+      "target": 17
+    },
+    {
+      "source": 2,
+      "target": 0
+    },
+    {
+      "source": 1,
+      "target": 4
+    },
+    {
+      "source": 7,
+      "target": 14
+    },
+    {
+      "source": 12,
+      "target": 19
+    },
+    {
+      "source": 4,
+      "target": 19
+    },
+    {
+      "source": 11,
+      "target": 19
+    },
+    {
+      "source": 1,
+      "target": 8
+    },
+    {
+      "source": 18,
+      "target": 9
+    },
+    {
+      "source": 14,
+      "target": 19
+    },
+    {
+      "source": 0,
+      "target": 10
+    },
+    {
+      "source": 0,
+      "target": 16
+    },
+    {
+      "source": 12,
+      "target": 6
+    },
+    {
+      "source": 3,
+      "target": 9
+    },
+    {
+      "source": 1,
+      "target": 17
+    },
+    {
+      "source": 11,
+      "target": 6
+    },
+    {
+      "source": 0,
+      "target": 3
+    },
+    {
+      "source": 2,
+      "target": 6
+    },
+    {
+      "source": 21,
+      "target": 17
+    },
+    {
+      "source": 14,
+      "target": 20
+    },
+    {
+      "source": 20,
+      "target": 16
+    },
+    {
+      "source": 20,
+      "target": 10
+    },
+    {
+      "source": 2,
+      "target": 18
+    },
+    {
+      "source": 18,
+      "target": 13
+    },
+    {
+      "source": 18,
+      "target": 17
+    },
+    {
+      "source": 7,
+      "target": 10
+    },
+    {
+      "source": 7,
+      "target": 16
+    },
+    {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 4,
+      "target": 10
+    },
+    {
+      "source": 4,
+      "target": 15
+    },
+    {
+      "source": 4,
+      "target": 16
+    },
+    {
+      "source": 3,
+      "target": 13
+    },
+    {
+      "source": 11,
+      "target": 15
+    },
+    {
+      "source": 21,
+      "target": 6
+    },
+    {
+      "source": 12,
+      "target": 5
+    },
+    {
+      "source": 14,
+      "target": 10
+    },
+    {
+      "source": 14,
+      "target": 15
+    },
+    {
+      "source": 14,
+      "target": 16
+    },
+    {
+      "source": 18,
+      "target": 19
+    },
+    {
+      "source": 11,
+      "target": 5
+    },
+    {
+      "source": 2,
+      "target": 5
+    },
+    {
+      "source": 14,
+      "target": 3
+    },
+    {
+      "source": 2,
+      "target": 13
+    },
+    {
+      "source": 3,
+      "target": 19
+    },
+    {
+      "source": 0,
+      "target": 4
+    },
+    {
+      "source": 18,
+      "target": 6
+    }
+  ]
+}
