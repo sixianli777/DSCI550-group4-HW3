@@ -1,6 +1,7 @@
 import os
 import json
 import pandas as pd
+<<<<<<< HEAD
 from collections import defaultdict
 from itertools import product
 
@@ -64,5 +65,67 @@ links_list = [{"source": nodes[a]["id"], "target": nodes[b]["id"]} for (a, b) in
 
 network = {"nodes": nodes_list, "links": links_list}
 
+=======
+from itertools import combinations
+from collections import Counter
+
+# --- 1. File Paths ---
+base_dir = os.path.dirname(__file__)
+tsv_path = os.path.join(base_dir, "..", "Data", "haunted_places_hw2_complete.tsv")
+output_path = os.path.join(base_dir, "..", "Data", "network_cleaned.json")
+
+# --- 2. Load TSV ---
+df = pd.read_csv(tsv_path, sep="\t")
+columns_to_use = ['apparition_type', 'event_type', 'time_of_day', 'spacy_entities']
+df = df[columns_to_use].copy()
+
+# --- 3. Clean + Split Terms ---
+def extract_terms(row):
+    terms = []
+
+    # Handle comma-separated fields
+    for col in ['apparition_type', 'event_type', 'time_of_day']:
+        if pd.notna(row[col]):
+            split_terms = [x.strip().lower() for x in str(row[col]).split(",") if x.strip()]
+            terms += split_terms
+
+    # spacy_entities: list
+    spacy_raw = row.get('spacy_entities', '')
+    if pd.notna(spacy_raw) and isinstance(spacy_raw, str) and spacy_raw.strip().startswith("["):
+        try:
+            entities = eval(spacy_raw)
+            if isinstance(entities, list):
+                terms += [str(e).strip().lower() for e in entities if isinstance(e, str)]
+        except:
+            pass  # skip bad evals
+
+    return list(set(terms))  # remove duplicates
+
+# --- 4. Generate Co-occurrence Pairs ---
+pair_counter = Counter()
+term_counter = Counter()
+
+for _, row in df.iterrows():
+    terms = extract_terms(row)
+    term_counter.update(terms)
+    pair_counter.update(combinations(terms, 2))
+
+# --- 5. Filter Weak Connections ---
+min_pair_count = 3
+filtered_pairs = {pair: count for pair, count in pair_counter.items() if count >= min_pair_count}
+used_terms = set(t for pair in filtered_pairs for t in pair)
+
+# --- 6. Create D3-Friendly JSON ---
+term_to_id = {term: i for i, term in enumerate(sorted(used_terms))}
+nodes = [{"id": i, "name": term} for term, i in term_to_id.items()]
+links = [
+    {"source": term_to_id[a], "target": term_to_id[b], "value": count}
+    for (a, b), count in filtered_pairs.items()
+]
+
+network = {"nodes": nodes, "links": links}
+
+# --- 7. Save JSON ---
+>>>>>>> 9798f02 (scatter)
 with open(output_path, "w") as f:
     json.dump(network, f, indent=2)
