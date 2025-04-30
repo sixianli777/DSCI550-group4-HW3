@@ -5,7 +5,7 @@ import json
 import time
 
 # 步骤 1：读取数据（确保文件名正确）
-df = pd.read_csv("haunted_places_hw2_complete.tsv", sep="\t")
+df = pd.read_csv("../Data/haunted_places_hw2_complete.tsv", sep="\t")
 
 # 步骤 2：获取 FIPS 编码（使用 FCC API）
 def get_fips(latitude, longitude):
@@ -37,7 +37,7 @@ for (state, county), count in fips_counter.items():
     output.append([str(count), state, county])
 
 # 步骤 6：保存 JSON 文件
-with open("haunted_county_bubble.json", "w") as f:
+with open("../Data/haunted_county_bubble.json", "w") as f:
     json.dump(output, f, indent=2)
 
 print("haunted_county_bubble.json generated")
