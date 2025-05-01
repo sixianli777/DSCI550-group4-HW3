@@ -1,18 +1,13 @@
 import React from 'react';
+import bubbleImage from './Bubble.jpg';
 
-const Bubble = () => {
+function Bubble() {
   return (
-    <div>
-      <h2>Bubble Map</h2>
-      <iframe
-        src={`${process.env.PUBLIC_URL}/Visuals/bubble.html`}
-        width="100%"
-        height="700"
-        style={{ border: 'none' }}
-        title="Bubble Map"
-      />
+    <div className="image-wrapper">
+      <h2 style={{ textAlign: 'left' }}>Bubble Map</h2>
+      <img src={bubbleImage} alt="Bubble Map" style={{ maxWidth: '100%' }} />
     </div>
   );
-};
+}
 
 export default Bubble;

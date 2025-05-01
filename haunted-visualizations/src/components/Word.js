@@ -1,18 +1,13 @@
 import React from 'react';
+import wordCloudImage from './Word.jpg';
 
-const Word = () => {
+function Word() {
   return (
-    <div>
-      <h2>Word Cloud</h2>
-      <iframe
-        src={`${process.env.PUBLIC_URL}/Visuals/word.html`}
-        width="100%"
-        height="700"
-        style={{ border: 'none' }}
-        title="Word Cloud"
-      />
+    <div className="image-wrapper">
+      <h2 style={{ textAlign: 'left' }}>Word Cloud</h2>
+      <img src={wordCloudImage} alt="Word Cloud" style={{ maxWidth: '100%' }} />
     </div>
   );
-};
+}
 
 export default Word;

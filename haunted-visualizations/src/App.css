@@ -118,3 +118,9 @@ html, body {
   border-radius: 8px;
   text-align: left;
 }
+
+.image-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
