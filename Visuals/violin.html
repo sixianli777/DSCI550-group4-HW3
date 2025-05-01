@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Violin Plots of Weather by Witness Count</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { font-family: sans-serif; background: #f8f8f8; margin: 20px; }
+    .chart-title { font-weight: bold; font-size: 18px; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<div id="plots"></div>
+
+<script>
+const width = 300, height = 300, margin = {top: 20, right: 30, bottom: 40, left: 50};
+
+d3.json("../Data/violin_cleaned.json").then(data => {
+  const weatherTypes = Array.from(new Set(data.map(d => d.weather_type)));
+
+  weatherTypes.forEach(weatherType => {
+    const container = d3.select("#plots")
+      .append("div")
+      .style("display", "inline-block")
+      .style("margin", "20px");
+
+    container.append("div")
+      .attr("class", "chart-title")
+      .text(weatherType);
+
+    const svg = container.append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const dataFiltered = data.filter(d => d.weather_type === weatherType);
+
+    const xGroups = Array.from(new Set(dataFiltered.map(d => d.witness_count))).sort();
+    const x = d3.scaleBand().domain(xGroups).range([0, width]).padding(0.05);
+    const y = d3.scaleLinear()
+      .domain(d3.extent(dataFiltered, d => d.weather_value)).nice()
+      .range([height, 0]);
+    svg.append("g").call(d3.axisLeft(y));
+    svg.append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x));
+
+    const histogram = d3.histogram()
+      .domain(y.domain())
+      .thresholds(y.ticks(25))
+      .value(d => d);
+
+    const sumstat = d3.groups(dataFiltered, d => d.witness_count).map(([key, group]) => {
+      const values = group.map(d => d.weather_value);
+      return { key, bins: histogram(values) };
+    });
+
+    const maxDensity = d3.max(sumstat, d => d3.max(d.bins, b => b.length));
+    const xNum = d3.scaleLinear().domain([-maxDensity, maxDensity]).range([-x.bandwidth() / 2, x.bandwidth() / 2]);
+
+    svg.selectAll("violin")
+      .data(sumstat)
+      .enter()
+      .append("g")
+      .attr("transform", d => `translate(${x(d.key) + x.bandwidth() / 2},0)`)
+      .append("path")
+      .datum(d => d.bins)
+      .style("fill", "#69b3a2")
+      .style("stroke", "#333")
+      .attr("d", d3.area()
+        .x0(d => xNum(-d.length))
+        .x1(d => xNum(d.length))
+        .y(d => y(d.x0))
+        .curve(d3.curveCatmullRom)
+      );
+  });
+});
+</script>
+
+</body>
+</html>
