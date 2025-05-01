@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scatter Plot: Haunted Sightings vs. Drinking</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f8f8;
+    }
+    .axis-label {
+      font-size: 14px;
+    }
+    .dot {
+      fill: steelblue;
+      stroke: black;
+    }
+    .label {
+      font-size: 10px;
+      fill: black;
+    }
+  </style>
+</head>
+<body>
+  <h2>Haunted Place Sightings vs. % Adults Drinking Monthly</h2>
+  <svg width="900" height="600"></svg>
+
+  <script>
+    const svg = d3.select("svg");
+    const margin = { top: 50, right: 50, bottom: 60, left: 80 };
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
+
+    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    d3.json("../Data/scatter_final.json").then(data => {
+      const x = d3.scaleLinear()
+                  .domain(d3.extent(data, d => d.sightings)).nice()
+                  .range([0, width]);
+
+      const y = d3.scaleLinear()
+                  .domain(d3.extent(data, d => d.pc_adult_drink_monthly)).nice()
+                  .range([height, 0]);
+
+      // X Axis
+      g.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .append("text")
+        .attr("x", width / 2)
+        .attr("y", 45)
+        .attr("fill", "black")
+        .attr("class", "axis-label")
+        .text("Sightings of Haunted Places (per capita)");
+
+      // Y Axis
+      g.append("g")
+        .call(d3.axisLeft(y));
+
+      g.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -60)
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .attr("fill", "black")
+        .attr("text-anchor", "middle")
+        .attr("class", "axis-label")
+        .text("% Adults Who Drink Monthly");
+
+      // Circles
+      g.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => x(d.sightings))
+        .attr("cy", d => y(d.pc_adult_drink_monthly))
+        .attr("r", 5);
+
+      // Text labels (state abbreviations)
+      g.selectAll("text.label")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("class", "label")
+        .attr("x", d => x(d.sightings) + 6) // offset right of the circle
+        .attr("y", d => y(d.pc_adult_drink_monthly) + 3)
+        .text(d => d.state_abbrev);
+    }).catch(error => {
+      console.error("Error loading data:", error);
+    });
+  </script>
+</body>
+</html>
