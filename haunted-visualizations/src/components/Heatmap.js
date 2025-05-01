@@ -5,7 +5,7 @@ const Heatmap = () => {
     <div>
       <h2>Heat Map</h2>
       <iframe
-        src={`${process.env.PUBLIC_URL}/Visuals/Heatmap.html`}
+        src={`${process.env.PUBLIC_URL}/Visuals/heatmap.html`}
         width="100%"
         height="700"
         style={{ border: 'none' }}
